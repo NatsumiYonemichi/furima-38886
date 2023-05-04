@@ -25,7 +25,7 @@
 | name               | string     | null: false                    |
 | introduction       | text       | null: false                    |
 | price              | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
@@ -46,8 +46,8 @@
 
 | Column             | Type       | Options                        |
 |------------------- | ------     | ------------------------------ |
-| user_id            | references | null: false, foreign_key: true |
-| item_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 ## Association
 
@@ -65,7 +65,7 @@
 | address            | string     | null: false                    |
 | building           | string     |                                |
 | phone_number       | string     | null: false                    |
-| purchase_id        | references | null: false, foreign_key: true |
+| purchase           | references | null: false, foreign_key: true |
 
 ## Association
 
