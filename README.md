@@ -16,41 +16,7 @@
 ## Association
 
 - has_many :items
-- has_one  :card
-- has_one  :payment
-
-
-## cards テーブル
-
-| Column             | Type       | Options                        |
-|------------------- | ------     | ------------------------------ |
-| customer           | string     | null: false                    |
-| card               | string     | null: false                    |
-| user               | references | null: false, foreign_key: true |
-
-## Association
-
-- belongs_to :user
-
-## payments テーブル
-
-| Column             | Type       | Options                        |
-|------------------- | ---------- | ------------------------------ |
-| family_name        | string     | null: false                    |
-| first_name         | string     | null: false                    |
-| family_name_kana   | string     | null: false                    |
-| first_name_kana    | string     | null: false                    |
-| post_code          | string     | null: false                    |
-| prefecture         | string     | null: false                    |
-| city               | string     | null: false                    |
-| building           | string     |                                |
-| phone_number       | string     | null: false                    |
-| user               | references | null: false, foreign_key: true |
-
-## Association
-
-- belongs_to :user
-
+- has_many :perchases
 
 ## items テーブル
 
@@ -70,6 +36,7 @@
 
 - belongs_to             :user
 - has_many               :images
+- has_one                :perchase
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :sender_area
@@ -86,3 +53,35 @@
 ## Association
 
 - belongs_to :item
+
+## perchases テーブル
+
+| Column             | Type       | Options                        |
+|------------------- | ------     | ------------------------------ |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
+
+## Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one    :payment
+
+## payments テーブル
+
+| Column             | Type       | Options                        |
+|------------------- | ---------- | ------------------------------ |
+| family_name        | string     | null: false                    |
+| first_name         | string     | null: false                    |
+| family_name_kana   | string     | null: false                    |
+| first_name_kana    | string     | null: false                    |
+| post_code          | string     | null: false                    |
+| prefecture         | string     | null: false                    |
+| city               | string     | null: false                    |
+| building           | string     |                                |
+| phone_number       | string     | null: false                    |
+| perchase           | references | null: false, foreign_key: true |
+
+## Association
+
+- belongs_to :perchase
