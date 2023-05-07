@@ -3,16 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   
   before do
-    @user = User.new
-    @user.nickname = "yama"
-    @user.email = Faker::Internet.free_email
-    @user.password = ('1a'+ Faker::Internet.password(min_length:6))
-    @user.password_confirmation = @user.password
-    @user.family_name = "山田"
-    @user.first_name = "花子"
-    @user.family_name_kana = "ヤマダ"
-    @user.first_name_kana = "ハナコ"
-    @user.birthday = Faker::Date.birthday
+    @user = FactoryBot.build(:user)
   end
 
   describe 'ユーザー新規登録' do
@@ -71,15 +62,7 @@ RSpec.describe User, type: :model do
 
       it '重複したemailが存在する場合は登録できない' do
         @user.save
-        another_user = User.new
-        another_user.nickname = "yama"
-        another_user.password = ('1a'+ Faker::Internet.password(min_length:6))
-        another_user.password_confirmation = @user.password
-        another_user.family_name = "山田"
-        another_user.first_name = "花子"
-        another_user.family_name_kana = "ヤマダ"
-        another_user.first_name_kana = "ハナコ"
-        another_user.birthday = Faker::Date.birthday
+        another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
         expect(another_user.errors.full_messages).to include ("Email has already been taken")
