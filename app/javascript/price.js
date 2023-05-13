@@ -6,8 +6,8 @@ window.addEventListener('load', function(){
     const profit = calculatePrice.value - commission;
     const commissionInput = document.getElementById("add-tax-price");
     const profitInput =document.getElementById("profit");
-    commissionInput.innerHTML = `${commission}`;
-    profitInput.innerHTML = `${profit}`;
+    commissionInput.innerHTML = `${Math.floor(commission)}`;
+    profitInput.innerHTML = `${Math.floor(profit)}`;
   });
 
 })
