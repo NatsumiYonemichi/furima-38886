@@ -49,14 +49,14 @@ class ItemsController < ApplicationController
   end
 
   def move_to_sign_in
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
+    return if user_signed_in?
+
+    redirect_to new_user_session_path
   end
 
   def move_to_index
-    unless current_user == @item.user
-      redirect_to action: :index
-    end
+    return if current_user == @item.user
+
+    redirect_to action: :index
   end
 end
