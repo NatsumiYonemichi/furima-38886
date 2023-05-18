@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが半角数字でないと出品できない' do
-        @item.price = "３００"
+        @item.price = '３００'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is invalid')
       end
