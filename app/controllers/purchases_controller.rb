@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action :set_item, only: :index
+  before_action :set_item, only: [:index, :create]
 
   def index
     @payment_purchase = PaymentPurchase.new
@@ -10,6 +10,8 @@ class PurchasesController < ApplicationController
     if @payment_purchase.valid?
       @payment_purchase.save
       redirect_to root_path
+    else
+      render :index
     end
   end
 
