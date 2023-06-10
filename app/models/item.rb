@@ -6,8 +6,9 @@ class Item < ApplicationRecord
   belongs_to :postage_type
   belongs_to :shipping_day
 
-  belongs_to :user
+  belongs_to       :user
   has_one_attached :image
+  has_one          :purchase
 
   with_options presence: true do
     validates :name
