@@ -57,13 +57,13 @@ RSpec.describe PaymentPurchase, type: :model do
         expect(@payment_purchase.errors.full_messages).to include("Phone number can't be blank")
       end
 
-      it 'phone_numberが10桁以下だと購入できない' do
+      it 'phone_numberが9桁以下だと購入できない' do
         @payment_purchase.phone_number = '1234567'
         @payment_purchase.valid?
         expect(@payment_purchase.errors.full_messages).to include("Phone number is invalid.")
       end
 
-      it 'phone_numberが11桁以上だと購入できない' do
+      it 'phone_numberが12桁以上だと購入できない' do
         @payment_purchase.phone_number = '123456789012'
         @payment_purchase.valid?
         expect(@payment_purchase.errors.full_messages).to include("Phone number is invalid.")
