@@ -86,6 +86,12 @@ RSpec.describe PaymentPurchase, type: :model do
         @payment_purchase.valid?
         expect(@payment_purchase.errors.full_messages).to include("Item can't be blank")
       end
+
+      it "tokenが空では登録できないこと" do
+        @payment_purchase.token = nil
+        @payment_purchase.valid?
+        expect(@payment_purchase.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
